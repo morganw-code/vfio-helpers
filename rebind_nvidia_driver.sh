@@ -1,7 +1,7 @@
 #!/bin/bash
 declare -A drivers
 drivers=(['0000:09:00.0']='nvidia' ['0000:09:00.1']='snd_hda_intel' ['0000:09:00.2']='xhci_hcd' ['0000:09:00.3']='nvidia-gpu')
-for device in '0000:09:00.0' '0000:09:00.1' '0000:09:00.2' '0000:09:00.3'; do
+for device in ${!drivers[@]}; do
     path="/sys/bus/pci/drivers/${drivers[$device]}/bind"
     echo -n $device >/sys/bus/pci/drivers/vfio-pci/unbind || echo "Failed to unbind $device"
     echo -n $device >$path || echo "Failed to bind $device at $path"
