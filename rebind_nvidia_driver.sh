@@ -12,4 +12,10 @@ for id in '1022 1482' '1022 1483' '10de 1e81' '10de 10f8' '10de 1ad8' '10de 1ad9
 done
 
 modprobe -r vfio-pci
-systemctl restart sddm
+
+read -p "Do you want to restart SDDM now? [Y/n] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    systemctl restart sddm
+fi
