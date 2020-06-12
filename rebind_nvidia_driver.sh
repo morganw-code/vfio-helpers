@@ -13,9 +13,9 @@ done
 
 modprobe -r vfio-pci
 
-read -p "Do you want to restart SDDM now? [Y/n] " -n 1 -r
+read -p "Do you want to restart LightDM now? [Y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    systemctl restart sddm
+    systemctl restart lightdm
 fi
